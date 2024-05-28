@@ -24,21 +24,28 @@ The ability to create, read, update and delete blog posts.
 
 4. Build the TypeScript code:
 
-    `npm run build`
-    # or 
-    `yarn build`
+    ```sh
+    npm run build
+    # or
+    yarn build
+    ```
 
 5. Start the server:
     - For development (with auto-reloading using `nodemon`):
 
-    `npm run dev`
-    # or 
-    `yarn dev`
+    ```sh
+    npm run dev
+    # or
+    yarn dev
+    ```
 
     - For production:
-    `npm start`
-    # or 
-    `yarn start`
+
+    ```sh
+    npm start
+    # or
+    yarn start
+    ```
 
 ## Technologies Used
 - Nodejs
@@ -57,3 +64,5 @@ Please refer to the API docs through the url below for detailed API documentatio
 ## Deployed API
 The API is deployed and accessible at the following link:
 [https://garage-mobility-blog-api.onrender.com](https://garage-mobility-blog-api.onrender.com)
+
+Kindly use a testing tool like Postman to hit the endpoints specified in the docs to see the API functionality.
