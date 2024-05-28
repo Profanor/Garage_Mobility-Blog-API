@@ -1,7 +1,5 @@
 import express from 'express';
 import morgan from 'morgan';
-import dotenv from 'dotenv';
-dotenv.config(); //configure to use environment variables
 import main from './config/database';
 main();
 
@@ -22,8 +20,4 @@ app.use(morgan('dev'));
 app.use('/', indexRoute);
 app.use('/api/posts', postRoutes);
 
-
-const PORT = process.env.PORT;
-app.listen(PORT, ()=> {
-    console.log(`app is listening on port ${PORT}`);
-});
+export default app;

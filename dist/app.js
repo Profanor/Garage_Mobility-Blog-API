@@ -5,8 +5,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const morgan_1 = __importDefault(require("morgan"));
-const dotenv_1 = __importDefault(require("dotenv"));
-dotenv_1.default.config(); //configure to use environment variables
 const database_1 = __importDefault(require("./config/database"));
 (0, database_1.default)();
 //Import routes
@@ -21,7 +19,4 @@ app.use((0, morgan_1.default)('dev'));
 //Routes
 app.use('/', index_1.default);
 app.use('/api/posts', postRoutes_1.default);
-const PORT = process.env.PORT;
-app.listen(PORT, () => {
-    console.log(`app is listening on port ${PORT}`);
-});
+exports.default = app;

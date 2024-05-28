@@ -11,8 +11,11 @@ export const createPost = async (req: Request, res: Response) => {
         if (!title || !content || !author) {
             return res.status(400).json({ error: 'All fields are required'});
         }
+        // create a new blog post
         const newPost = new Post({ title, content, author });
         await newPost.save();
+
+        // respond with a success message and the created post object
         return res.status(201).json( { message: 'Your post was created successfully', newPost });
 
     }   catch(error) {
@@ -63,7 +66,7 @@ export const updatePost = async ( req:Request, res: Response ) => {
         if (!updatedPost) {
             return res.status(404).json({ error: 'Post not found' });
         }
-        return res.status(200).json({message: 'OK', updatedPost});
+        return res.status(200).json({message: 'Post updated successfully', updatedPost});
     }   catch(error) {
         return res.status(500).json({ error: 'Internal server error '});
     }

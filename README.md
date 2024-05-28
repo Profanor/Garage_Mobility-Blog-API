@@ -57,8 +57,8 @@ The ability to create, read, update and delete blog posts.
 
 
 ## API Endpoints
-Please refer to the API docs through the url below for detailed API documentation.
-[API Documentation]()
+Please refer to the API docs through the url for detailed API documentation.
+[https://documenter.getpostman.com/view/31288774/2sA3QtdBGu](https://documenter.getpostman.com/view/31288774/2sA3QtdBGu)
 
 
 ## Deployed API
