@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updatePost = exports.getPostById = exports.getPosts = exports.createPost = void 0;
+exports.deletePost = exports.updatePost = exports.getPostById = exports.getPosts = exports.createPost = void 0;
 const Posts_1 = __importDefault(require("../models/Posts"));
 // Create a blog post
 const createPost = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -75,3 +75,18 @@ const updatePost = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     }
 });
 exports.updatePost = updatePost;
+// Delete a blog post
+const deletePost = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        let postId = req.params.postId;
+        const post = yield Posts_1.default.findByIdAndDelete(postId);
+        if (!post) {
+            return res.status(404).json({ error: 'Post not found' });
+        }
+        return res.status(204).send();
+    }
+    catch (error) {
+        return res.status(500).json({ error: 'Internal server error ' });
+    }
+});
+exports.deletePost = deletePost;

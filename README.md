@@ -2,6 +2,11 @@
 
 A simple Restful API for managing blog posts
 
+## Overview
+Project Garage_Mobility is a RESTful API for managing blog posts. The API has the following features:
+
+The ability to create, read, update and delete blog posts.
+
 ## Setup
 
 1. Clone the repository
@@ -13,7 +18,7 @@ A simple Restful API for managing blog posts
 
 3. Configure your environment variables. Create a `.env` file in your root directory and add your configuration.
 
-4. Buildthe TypeScript code:
+4. Build the TypeScript code:
     `npm run build`
     # or 
     `yarn build`
