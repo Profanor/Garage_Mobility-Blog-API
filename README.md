@@ -1,0 +1,42 @@
+# Project Garage_Mobility
+
+A simple Restful API for managing blog posts
+
+## Setup
+
+1. Clone the repository
+
+2. Install dependencies using a package manager of your choice:
+    `npm install`
+    # or 
+   ` yarn install`
+
+3. Configure your environment variables. Create a `.env` file in your root directory and add your configuration.
+
+4. Buildthe TypeScript code:
+    `npm run build`
+    # or 
+    `yarn build`
+
+5. Start the server:
+    - For development (with auto-reloading using `nodemon`):
+    `npm run dev`
+    # or 
+    `yarn dev`
+
+    - For production:
+    `npm start`
+    # or 
+    `yarn start`
+
+## Technologies Used
+- Nodejs
+- Express.js
+- TypeScript
+- MongoDB
+- Mongoose
+- Nodemon (for development)
+
+## API Endpoints
+Please refer to the API Documentation through the url below for proper documentation.
+[API Documentation]()

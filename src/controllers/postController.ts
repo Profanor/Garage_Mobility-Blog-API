@@ -69,3 +69,19 @@ export const updatePost = async ( req:Request, res: Response ) => {
     }
 };
 
+
+// Delete a blog post
+export const deletePost = async ( req:Request, res: Response ) => {
+    try {
+        let postId = req.params.postId;
+
+        const post = await Post.findByIdAndDelete(postId);
+
+        if(!post) {
+            return res.status(404).json({ error: 'Post not found' });
+        }
+        return res.status(204).send();
+    }   catch(error) {
+        return res.status(500).json({ error: 'Internal server error '});
+    }
+};
