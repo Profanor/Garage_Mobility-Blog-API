@@ -2,6 +2,8 @@ import express from 'express';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
 dotenv.config(); //configure to use environment variables
+import main from './config/database';
+main();
 
 //Import routes
 import indexRoute from './routes/index';
