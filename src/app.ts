@@ -7,6 +7,7 @@ main();
 
 //Import routes
 import indexRoute from './routes/index';
+import postRoutes from './routes/postRoutes';
 
 //Initialize express
 const app = express();
@@ -19,6 +20,7 @@ app.use(morgan('dev'));
 
 //Routes
 app.use('/', indexRoute);
+app.use('/api/posts', postRoutes);
 
 
 const PORT = process.env.PORT;
