@@ -12,19 +12,25 @@ The ability to create, read, update and delete blog posts.
 1. Clone the repository
 
 2. Install dependencies using a package manager of your choice:
-    `npm install`
-    # or 
-   ` yarn install`
+
+    ```sh
+    npm install
+    # or
+    yarn install
+    ```
 
 3. Configure your environment variables. Create a `.env` file in your root directory and add your configuration.
 
+
 4. Build the TypeScript code:
+
     `npm run build`
     # or 
     `yarn build`
 
 5. Start the server:
     - For development (with auto-reloading using `nodemon`):
+
     `npm run dev`
     # or 
     `yarn dev`
@@ -42,6 +48,12 @@ The ability to create, read, update and delete blog posts.
 - Mongoose
 - Nodemon (for development)
 
+
 ## API Endpoints
-Please refer to the API Documentation through the url below for proper documentation.
+Please refer to the API docs through the url below for detailed API documentation.
 [API Documentation]()
+
+
+## Deployed API
+The API is deployed and accessible at the following link:
+[https://garage-mobility-blog-api.onrender.com](https://garage-mobility-blog-api.onrender.com)
