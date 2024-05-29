@@ -26,7 +26,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
     const error: any = new Error('Not Found');
     error.status = 404;
     next(error); // Pass the error to the next middleware
-  });
+});
   
   // Error-handling middleware
   app.use((error: any, req: Request, res: Response, next: NextFunction) => {
@@ -36,9 +36,6 @@ app.use((req: Request, res: Response, next: NextFunction) => {
         message: error.message || 'Internal Server Error',
       },
     });
-  });
-
-
-
+});
 
 export default app;

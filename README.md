@@ -57,6 +57,35 @@ The ability to create, read, update and delete blog posts.
 
 
 ## API Endpoints
+
+1. **Create a new blog post**:
+   - Method: `POST`
+   - URL: `/api/posts`
+   - Body:
+     ```json
+     {
+       "title": "Sample Blog Post",
+       "content": "This is the content of the blog post.",
+       "author": "John Doe"
+     }
+     ```
+
+2. **Get all blog posts**:
+   - Method: `GET`
+   - URL: `/api/posts`
+
+3. **Get a single blog post by ID**:
+   - Method: `GET`
+   - URL: `/api/posts/:postId`
+
+4. **Update a blog post by ID**:
+   - Method: `PUT`
+   - URL: `/api/posts/:postId`
+
+5. **Delete a blog post by ID**:
+   - Method: `DELETE`
+   - URL: `/api/posts/:postId`
+
 Please refer to the API docs through the url for detailed API documentation.
 [https://documenter.getpostman.com/view/31288774/2sA3QtdBGu](https://documenter.getpostman.com/view/31288774/2sA3QtdBGu)
 
