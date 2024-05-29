@@ -1,5 +1,6 @@
 import { Response, Request } from 'express';
 import Post from '../models/Posts';
+import logger from '../logger';
 
 
 // Create a blog post
@@ -19,7 +20,7 @@ export const createPost = async (req: Request, res: Response) => {
         return res.status(201).json( { message: 'Your post was created successfully', newPost });
 
     }   catch(error) {
-        console.error('An error occured while trying to create that post:', error);
+        logger.error('An error occured while trying to create that post:', error);
         return res.status(500).json({ error: 'Internal server error '})
     }
 };
@@ -33,7 +34,7 @@ export const getPosts = async ( req:Request, res: Response ) => {
         return res.status(200).json({ message: 'OK', posts: posts });
 
     }   catch(error) {
-        console.error('An error occured fetching posts:', error);
+        logger.error('An error occured fetching posts:', error);
         return res.status(500).json({ error: 'Internal server error '});
     }
 }; 

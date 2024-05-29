@@ -13,6 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
+const logger_1 = __importDefault(require("../logger"));
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const DB = process.env.MONGODB_URI || '';
@@ -22,7 +23,7 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
         console.log('Connected to the database');
     }
     catch (error) {
-        console.error('Error connecting to the MongoDB database:', error);
+        logger_1.default.error('Error connecting to the MongoDB database:', error);
     }
 });
 exports.default = main;

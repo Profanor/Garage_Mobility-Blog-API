@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import logger from '../logger';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -9,7 +10,7 @@ const main = async() => {
         await mongoose.connect(DB);
         console.log('Connected to the database');
     } catch(error) {
-        console.error('Error connecting to the MongoDB database:', error);
+        logger.error('Error connecting to the MongoDB database:', error);
     }
 }
 export default main;

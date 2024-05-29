@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deletePost = exports.updatePost = exports.getPostById = exports.getPosts = exports.createPost = void 0;
 const Posts_1 = __importDefault(require("../models/Posts"));
+const logger_1 = __importDefault(require("../logger"));
 // Create a blog post
 const createPost = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -22,12 +23,14 @@ const createPost = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         if (!title || !content || !author) {
             return res.status(400).json({ error: 'All fields are required' });
         }
+        // create a new blog post
         const newPost = new Posts_1.default({ title, content, author });
         yield newPost.save();
+        // respond with a success message and the created post object
         return res.status(201).json({ message: 'Your post was created successfully', newPost });
     }
     catch (error) {
-        console.error('An error occured while trying to create that post:', error);
+        logger_1.default.error('An error occured while trying to create that post:', error);
         return res.status(500).json({ error: 'Internal server error ' });
     }
 });
@@ -39,7 +42,7 @@ const getPosts = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         return res.status(200).json({ message: 'OK', posts: posts });
     }
     catch (error) {
-        console.error('An error occured fetching posts:', error);
+        logger_1.default.error('An error occured fetching posts:', error);
         return res.status(500).json({ error: 'Internal server error ' });
     }
 });
@@ -68,7 +71,7 @@ const updatePost = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         if (!updatedPost) {
             return res.status(404).json({ error: 'Post not found' });
         }
-        return res.status(200).json({ message: 'OK', updatedPost });
+        return res.status(200).json({ message: 'Post updated successfully', updatedPost });
     }
     catch (error) {
         return res.status(500).json({ error: 'Internal server error ' });
