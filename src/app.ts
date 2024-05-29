@@ -8,6 +8,7 @@ main();
 import indexRoute from './routes/index';
 import postRoutes from './routes/postRoutes';
 
+
 //Initialize express
 const app = express();
 
@@ -16,6 +17,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended:true }));
 app.use(morgan('dev'));
 
+//Routes
+app.use('/', indexRoute);
+app.use('/api/posts', postRoutes);
 
 // Middleware to handle 404 errors
 app.use((req: Request, res: Response, next: NextFunction) => {
@@ -35,8 +39,6 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   });
 
 
-//Routes
-app.use('/', indexRoute);
-app.use('/api/posts', postRoutes);
+
 
 export default app;
