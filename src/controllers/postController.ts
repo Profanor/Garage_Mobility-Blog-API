@@ -3,6 +3,13 @@ import Post from '../models/Posts';
 import logger from '../logger';
 
 
+// Middleware for handling errors
+const handleErrors = (res: Response, error: any, customMessage?: string) => {
+    logger.error(customMessage || 'An error occurred:', error);
+    return res.status(500).json({ error: customMessage || 'Internal server error' });
+};
+
+
 // Create a blog post
 export const createPost = async (req: Request, res: Response) => {
     try {
@@ -20,8 +27,7 @@ export const createPost = async (req: Request, res: Response) => {
         return res.status(201).json( { message: 'Your post was created successfully', newPost });
 
     }   catch(error) {
-        logger.error('An error occured while trying to create that post:', error);
-        return res.status(500).json({ error: 'Internal server error '})
+        return handleErrors(res, error, 'An error occurred while trying to create that post');
     }
 };
 
@@ -34,8 +40,7 @@ export const getPosts = async ( req:Request, res: Response ) => {
         return res.status(200).json({ message: 'OK', posts: posts });
 
     }   catch(error) {
-        logger.error('An error occured fetching posts:', error);
-        return res.status(500).json({ error: 'Internal server error '});
+        return handleErrors(res, error, 'An error occured fetching blog posts');
     }
 }; 
 
@@ -51,7 +56,7 @@ export const getPostById = async ( req:Request, res: Response ) => {
         }
         return res.status(200).json({message: 'OK', post});
     }   catch(error) {
-        return res.status(500).json({ error: 'Internal server error '});
+        return handleErrors(res, error);
     }
 };
 
@@ -59,6 +64,11 @@ export const getPostById = async ( req:Request, res: Response ) => {
 export const updatePost = async ( req:Request, res: Response ) => {
     try {
         const { title, content } = req.body;
+
+        // input validation check for empty fields
+        if (!title || !content) {
+            return res.status(400).json({ error: 'Title and Content fields are required' });
+        }
 
         let postId = req.params.postId;
 
@@ -69,7 +79,7 @@ export const updatePost = async ( req:Request, res: Response ) => {
         }
         return res.status(200).json({message: 'Post updated successfully', updatedPost});
     }   catch(error) {
-        return res.status(500).json({ error: 'Internal server error '});
+        return handleErrors(res, error);
     }
 };
 
@@ -86,6 +96,6 @@ export const deletePost = async ( req:Request, res: Response ) => {
         }
         return res.status(204).send();
     }   catch(error) {
-        return res.status(500).json({ error: 'Internal server error '});
+        return handleErrors(res, error);
     }
 };
